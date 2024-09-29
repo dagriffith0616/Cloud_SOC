@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+I leveraged Azure cloud services to deploy multiple Virtual Machines and Virtual Networks in this project. I then configured agents on the VMs and network groups to forward logs into Log Analytics Workspace. I then configure Microsoft Sentinel SIEM to build attack maps, trigger alerts, and automatically create incidents from the alerts. I configured the environment to be accessible from the internet and observed the attacks over a 24-hour period. Using Microsoft Sentinel, I investigated the various alerts and applied network security controls. After hardening the networks, I monitored the environment for 24 hours to compare the metrics. The captured metrics were: 
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
@@ -32,7 +32,9 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
+-- Network Security Groups- Malicious flows allowed in:
+![image](https://github.com/user-attachments/assets/54c266f9-09a8-4eb2-85ba-513d84ab7a8d)
+
 ![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
 ![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
 
